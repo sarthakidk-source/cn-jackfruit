@@ -68,6 +68,82 @@ class ProtocolTests(unittest.TestCase):
         with self.assertRaises(ProtocolError):
             rx.recv()
 
+    def test_non_object_and_non_string_type_raise(self):
+        for bad in (b"[1,2]\n", b'"str"\n', b"42\n", b"null\n", b'{"type":5}\n'):
+            with self.subTest(bad=bad):
+                a, rx = self.pair()
+                a.sendall(bad)
+                with self.assertRaises(ProtocolError):
+                    rx.recv()
+
+    def test_invalid_utf8_raises(self):
+        a, rx = self.pair()
+        a.sendall(b"\xff\xfe\xfd\n")
+        with self.assertRaises(ProtocolError):
+            rx.recv()
+
+    def test_blank_lines_are_skipped(self):
+        a, rx = self.pair()
+        a.sendall(b'\n\n  \n{"type":"A"}\n')
+        self.assertEqual(rx.recv()["type"], "A")
+
+    def test_overlong_line_rejected(self):
+        a, rx = self.pair()
+        from app.protocol import MAX_LINE_BYTES
+
+        def flood():
+            try:
+                a.sendall(b"x" * (MAX_LINE_BYTES + 100000))
+            except OSError:
+                pass
+        t = threading.Thread(target=flood, daemon=True)
+        t.start()
+        with self.assertRaises(ProtocolError):
+            rx.recv()
+        rx.close()
+        t.join(timeout=5)
+
+    def test_unicode_and_large_message_roundtrip(self):
+        a, b = socket.socketpair()
+        self.addCleanup(a.close)
+        self.addCleanup(b.close)
+        tx, rx = MessageChannel(a), MessageChannel(b)
+        msg = {"type": "T", "text": "héllo ✓ \n newline inside string", "blob": "z" * 500000}
+        t = threading.Thread(target=tx.send, args=(msg,), daemon=True)
+        t.start()
+        self.assertEqual(rx.recv(), msg)
+        t.join(timeout=5)
+
+    def test_concurrent_senders_never_interleave(self):
+        a, b = socket.socketpair()
+        self.addCleanup(a.close)
+        self.addCleanup(b.close)
+        tx, rx = MessageChannel(a), MessageChannel(b)
+        n_threads, per = 4, 50
+
+        def spam(k):
+            for i in range(per):
+                tx.send({"type": "S", "who": k, "i": i, "pad": "p" * 3000})
+        threads = [threading.Thread(target=spam, args=(k,), daemon=True) for k in range(n_threads)]
+        for t in threads:
+            t.start()
+        seen = {}
+        for _ in range(n_threads * per):
+            m = rx.recv()
+            seen.setdefault(m["who"], []).append(m["i"])
+        for k in range(n_threads):
+            self.assertEqual(seen[k], list(range(per)))   # per-sender order preserved
+
+    def test_encode_decode_helpers(self):
+        from app.protocol import decode_line, encode_message, require
+        data = encode_message({"type": "X", "a": 1})
+        self.assertTrue(data.endswith(b"\n"))
+        self.assertEqual(data.count(b"\n"), 1)
+        self.assertEqual(decode_line(data.strip()), {"type": "X", "a": 1})
+        with self.assertRaises(ProtocolError):
+            require({"type": "X"}, "a", "b")
+        require({"type": "X", "a": 1, "b": 2}, "a", "b")
+
 
 if __name__ == "__main__":
     unittest.main()

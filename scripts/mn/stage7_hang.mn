@@ -1,0 +1,19 @@
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh sleep 2
+h1 python3 -u -m app.task_manager > results/s7b_manager.log 2>&1 &
+w1 python3 -u -m app.worker --id w1 --manager 10.0.0.1 > results/s7b_w1.log 2>&1 &
+w2 python3 -u -m app.worker --id w2 --manager 10.0.0.1 > results/s7b_w2.log 2>&1 &
+w3 python3 -u -m app.worker --id 10.0.0.13 --manager 10.0.0.1 > results/s7b_w3.log 2>&1 &
+w4 python3 -u -m app.worker --id w4 --manager 10.0.0.1 > results/s7b_w4.log 2>&1 &
+sh sleep 2
+h2 python3 -u -m app.client --manager 10.0.0.1 --tasks 40 --work-ms 500 --wait-workers 4 --out results/s7b_client.json > results/s7b_client.log 2>&1 &
+sh sleep 3
+sh pkill -STOP -f "[a]pp.worker --id 10.0.0.13"
+sh sleep 14
+sh pkill -CONT -f "[a]pp.worker --id 10.0.0.13"
+sh sleep 4
+sh echo "=== client summary"
+sh cat results/s7b_client.log
+sh echo "=== manager events"
+sh grep -E "FAILED|requeued|registered|duplicate" results/s7b_manager.log

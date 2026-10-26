@@ -1,0 +1,3 @@
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh sleep 2

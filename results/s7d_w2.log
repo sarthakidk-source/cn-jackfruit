@@ -1,0 +1,10 @@
+09:56:41.488 INFO worker[158983]: registered with manager 10.0.0.1:9100 as 10.0.0.12 (heartbeat 1.0s)
+09:56:44.018 INFO worker[158983]: task t0001 done in 506 ms
+09:56:44.525 INFO worker[158983]: task t0005 done in 506 ms
+09:56:45.054 INFO worker[158983]: task t0009 done in 529 ms
+09:56:45.559 INFO worker[158983]: task t0014 done in 504 ms
+09:56:46.063 INFO worker[158983]: task t0019 done in 504 ms
+09:56:46.568 INFO worker[158983]: task t0022 done in 504 ms
+09:56:46.584 INFO worker[158983]: signal 15 received, stopping
+09:56:47.074 INFO worker[158983]: task t0026 done in 505 ms
+09:56:47.074 INFO worker[158983]: worker exiting (manager closed the connection)

@@ -1,0 +1,17 @@
+07:37:39.119 INFO worker[141543]: registered with manager 10.0.0.1:9100 as 10.0.0.11 (heartbeat 1.0s)
+07:39:25.517 INFO worker[141543]: task t0000 done in 134 ms
+07:39:25.633 INFO worker[141543]: task t0004 done in 115 ms
+07:39:25.753 INFO worker[141543]: task t0009 done in 117 ms
+07:39:25.863 INFO worker[141543]: task t0012 done in 109 ms
+07:39:25.973 INFO worker[141543]: task t0014 done in 108 ms
+07:39:26.084 INFO worker[141543]: task t0018 done in 110 ms
+07:39:26.203 INFO worker[141543]: task t0020 done in 117 ms
+07:39:26.316 INFO worker[141543]: task t0022 done in 112 ms
+07:39:26.455 INFO worker[141543]: task t0024 done in 134 ms
+07:39:26.578 INFO worker[141543]: task t0028 done in 121 ms
+07:39:26.693 INFO worker[141543]: task t0030 done in 112 ms
+07:39:26.812 INFO worker[141543]: task t0033 done in 116 ms
+07:39:26.936 INFO worker[141543]: task t0036 done in 123 ms
+07:39:27.058 INFO worker[141543]: task t0039 done in 121 ms
+07:42:12.069 INFO worker[141543]: signal 15 received, stopping
+07:42:12.182 INFO worker[141543]: worker exiting (manager closed the connection)

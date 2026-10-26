@@ -1,0 +1,15 @@
+09:32:08.199 INFO worker[156450]: registered with manager 10.0.0.1:9100 as 10.0.0.12 (heartbeat 1.0s)
+09:32:10.698 INFO worker[156450]: task t0001 done in 507 ms
+09:32:11.213 INFO worker[156450]: task t0005 done in 514 ms
+09:32:11.737 INFO worker[156450]: task t0009 done in 523 ms
+09:32:12.269 INFO worker[156450]: task t0014 done in 524 ms
+09:32:12.782 INFO worker[156450]: task t0018 done in 511 ms
+09:32:13.292 INFO worker[156450]: task t0023 done in 509 ms
+09:32:13.880 INFO worker[156450]: task t0027 done in 588 ms
+09:32:14.391 INFO worker[156450]: task t0030 done in 509 ms
+09:32:14.900 INFO worker[156450]: task t0032 done in 508 ms
+09:32:15.410 INFO worker[156450]: task t0035 done in 509 ms
+09:32:15.916 INFO worker[156450]: task t0038 done in 506 ms
+09:32:16.795 INFO worker[156450]: task t0020 done in 537 ms
+09:33:25.230 INFO worker[156450]: signal 15 received, stopping
+09:33:25.382 INFO worker[156450]: worker exiting (shutdown)

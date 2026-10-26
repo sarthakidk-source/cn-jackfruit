@@ -1,0 +1,6 @@
+submitted 40 tasks (0 duplicate, 0 rejected)
+completed 40 / 40   failed 0   unfinished 0   timed_out=False
+makespan 7.183 s   throughput 5.569 tasks/s   requeues 2
+latency ms: {'mean': 3756.6, 'median': 4101.4, 'max': 7182.9}
+tasks per worker: {'10.0.0.11': 12, '10.0.0.12': 1, '10.0.0.13': 13, '10.0.0.14': 14}
+full result written to results/s7a_client.json

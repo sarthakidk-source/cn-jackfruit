@@ -1,0 +1,19 @@
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh sleep 2
+h1 python3 -u -m app.task_manager --max-attempts 1 > results/s7c_manager.log 2>&1 &
+w1 python3 -u -m app.worker --id w1 --manager 10.0.0.1 > results/s7c_w1.log 2>&1 &
+w2 python3 -u -m app.worker --id w2 --manager 10.0.0.1 > results/s7c_w2.log 2>&1 &
+w3 python3 -u -m app.worker --id w3 --manager 10.0.0.1 > results/s7c_w3.log 2>&1 &
+w4 python3 -u -m app.worker --id w4 --manager 10.0.0.1 > results/s7c_w4.log 2>&1 &
+sh sleep 2
+h2 python3 -u -m app.client --manager 10.0.0.1 --tasks 40 --work-ms 500  --wait-workers 4 --out results/s7c_client.json > results/s7c_client.log 2>&1 &
+sh sleep 3
+sh echo "pids matched for kill: $(pgrep -f '[a]pp.worker --id 10.0.0.12')"
+sh pkill -f "[a]pp.worker --id 10.0.0.12"
+sh sleep 12
+sh echo "=== client summary"
+sh cat results/s7c_client.log
+sh echo "=== manager events"
+sh grep -E "FAILED|requeued" results/s7c_manager.log
+sh python3 -c "import json;d=json.load(open('results/s7c_client.json'));ok=d['failed']>=1 and d['requeues']==0 and d['completed']+d['failed']==40;print('7C','PASS' if ok else 'FAIL','completed',d['completed'],'failed',d['failed'],'requeues',d['requeues'])"

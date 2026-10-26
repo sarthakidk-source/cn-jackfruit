@@ -1,0 +1,5 @@
+09:07:51.104 INFO worker[154801]: registered with manager 10.0.0.1:9100 as 10.0.0.12 (heartbeat 1.0s)
+09:07:53.605 INFO worker[154801]: task t0001 done in 504 ms
+09:07:54.086 INFO worker[154801]: signal 15 received, stopping
+09:07:54.113 INFO worker[154801]: task t0005 done in 508 ms
+09:07:54.114 INFO worker[154801]: worker exiting (manager closed the connection)

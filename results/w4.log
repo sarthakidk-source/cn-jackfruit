@@ -1,0 +1,6 @@
+07:37:59.633 INFO worker[141862]: registered with manager 10.0.0.1:9100 as 10.0.0.14 (heartbeat 1.0s)
+07:39:25.815 INFO worker[141862]: task t0003 done in 415 ms
+07:39:26.227 INFO worker[141862]: task t0007 done in 411 ms
+07:39:26.647 INFO worker[141862]: task t0016 done in 418 ms
+07:39:27.064 INFO worker[141862]: task t0026 done in 416 ms
+07:39:27.492 INFO worker[141862]: task t0035 done in 427 ms
