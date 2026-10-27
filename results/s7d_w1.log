@@ -1,11 +1,13 @@
-09:56:41.386 INFO worker[158978]: registered with manager 10.0.0.1:9100 as 10.0.0.11 (heartbeat 1.0s)
-09:56:44.018 INFO worker[158978]: task t0000 done in 511 ms
-09:56:44.525 INFO worker[158978]: task t0004 done in 507 ms
-09:56:45.036 INFO worker[158978]: task t0010 done in 510 ms
-09:56:45.550 INFO worker[158978]: task t0013 done in 513 ms
-09:56:46.057 INFO worker[158978]: task t0016 done in 506 ms
-09:56:46.563 INFO worker[158978]: task t0021 done in 506 ms
-09:56:47.068 INFO worker[158978]: task t0025 done in 504 ms
-09:56:47.585 INFO worker[158978]: task t0029 done in 516 ms
-09:56:48.130 INFO worker[158978]: task t0032 done in 545 ms
-09:56:48.634 INFO worker[158978]: task t0036 done in 503 ms
+20:27:51.448 WARNING worker[6222]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:27:55.619 WARNING worker[6222]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:27:59.894 WARNING worker[6222]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:04.076 WARNING worker[6222]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:08.409 WARNING worker[6222]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:12.502 WARNING worker[6222]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:16.645 WARNING worker[6222]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:20.893 WARNING worker[6222]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:25.302 WARNING worker[6222]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:29.484 WARNING worker[6222]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:33.631 WARNING worker[6222]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:37.979 WARNING worker[6222]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:42.069 WARNING worker[6222]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host

@@ -1,14 +1,18 @@
-09:56:15.008 INFO worker[158568]: registered with manager 10.0.0.1:9100 as 10.0.0.13 (heartbeat 1.0s)
-09:56:17.520 INFO worker[158568]: task t0002 done in 507 ms
-09:56:18.026 INFO worker[158568]: task t0006 done in 506 ms
-09:56:18.534 INFO worker[158568]: task t0010 done in 506 ms
-09:56:19.038 INFO worker[158568]: task t0014 done in 504 ms
-09:56:19.547 INFO worker[158568]: task t0018 done in 508 ms
-09:56:20.058 INFO worker[158568]: task t0021 done in 510 ms
-09:56:20.566 INFO worker[158568]: task t0024 done in 508 ms
-09:56:21.071 INFO worker[158568]: task t0029 done in 505 ms
-09:56:21.580 INFO worker[158568]: task t0032 done in 508 ms
-09:56:22.089 INFO worker[158568]: task t0035 done in 509 ms
-09:56:22.594 INFO worker[158568]: task t0038 done in 504 ms
-09:56:39.293 INFO worker[158568]: signal 15 received, stopping
-09:56:39.294 INFO worker[158568]: worker exiting (shutdown)
+20:26:39.582 WARNING worker[5721]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:26:43.671 WARNING worker[5721]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:26:47.829 WARNING worker[5721]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:26:52.053 WARNING worker[5721]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:26:56.148 WARNING worker[5721]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:27:00.358 WARNING worker[5721]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:27:04.471 WARNING worker[5721]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:27:08.574 WARNING worker[5721]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:27:12.660 WARNING worker[5721]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:27:16.757 WARNING worker[5721]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:27:20.867 WARNING worker[5721]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:27:24.948 WARNING worker[5721]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:27:29.054 WARNING worker[5721]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:27:33.175 WARNING worker[5721]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:27:37.457 WARNING worker[5721]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:27:41.598 WARNING worker[5721]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:27:45.946 WARNING worker[5721]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:27:46.118 INFO worker[5721]: signal 15 received, stopping

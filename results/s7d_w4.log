@@ -1,12 +1,13 @@
-09:56:41.481 INFO worker[159017]: registered with manager 10.0.0.1:9100 as 10.0.0.14 (heartbeat 1.0s)
-09:56:44.022 INFO worker[159017]: task t0003 done in 512 ms
-09:56:44.530 INFO worker[159017]: task t0007 done in 508 ms
-09:56:45.038 INFO worker[159017]: task t0011 done in 507 ms
-09:56:45.549 INFO worker[159017]: task t0015 done in 510 ms
-09:56:46.056 INFO worker[159017]: task t0017 done in 507 ms
-09:56:46.560 INFO worker[159017]: task t0020 done in 504 ms
-09:56:47.074 INFO worker[159017]: task t0024 done in 513 ms
-09:56:47.583 INFO worker[159017]: task t0028 done in 509 ms
-09:56:48.094 INFO worker[159017]: task t0033 done in 509 ms
-09:56:48.599 INFO worker[159017]: task t0035 done in 505 ms
-09:56:49.106 INFO worker[159017]: task t0038 done in 505 ms
+20:27:51.521 WARNING worker[6246]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:27:55.606 WARNING worker[6246]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:27:59.702 WARNING worker[6246]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:03.807 WARNING worker[6246]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:07.895 WARNING worker[6246]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:11.989 WARNING worker[6246]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:16.088 WARNING worker[6246]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:20.184 WARNING worker[6246]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:24.282 WARNING worker[6246]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:28.374 WARNING worker[6246]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:32.470 WARNING worker[6246]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:36.566 WARNING worker[6246]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
+20:28:40.726 WARNING worker[6246]: connect to 10.0.0.1:9100 failed: [Errno 113] No route to host
