@@ -1,0 +1,151 @@
+sh mkdir -p results/exp
+sh echo "[linkfail static run 1]"
+link s1 s2 up
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh pkill -f "[i]perf"
+sh pkill -f "[p]ing -D"
+sh sleep 2
+sh python3 scripts/ctl.py mode static
+h1 python3 -u -m app.task_manager > results/exp/linkfail_static_r1_manager.log 2>&1 &
+w1 python3 -u -m app.worker --id w1 --manager 10.0.0.1 > results/exp/linkfail_static_r1_w1.log 2>&1 &
+w2 python3 -u -m app.worker --id w2 --manager 10.0.0.1 > results/exp/linkfail_static_r1_w2.log 2>&1 &
+w3 python3 -u -m app.worker --id w3 --manager 10.0.0.1 > results/exp/linkfail_static_r1_w3.log 2>&1 &
+w4 python3 -u -m app.worker --id w4 --manager 10.0.0.1 > results/exp/linkfail_static_r1_w4.log 2>&1 &
+sh sleep 3
+h1 ping -D -i 0.05 -w 22 10.0.0.11 > results/exp/linkfail_static_r1_ping.log 2>&1 &
+h2 python3 -u -m app.client --manager 10.0.0.1 --tasks 100 --work-ms 300 --wait-workers 4 --out results/exp/linkfail_static_r1_client.json > results/exp/linkfail_static_r1_client.log 2>&1 &
+sh sleep 4
+sh date +%s.%N > results/exp/linkfail_static_r1_times.txt
+link s1 s2 down
+sh sleep 8
+sh date +%s.%N >> results/exp/linkfail_static_r1_times.txt
+link s1 s2 up
+sh sleep 13
+sh python3 scripts/ctl.py state-json > results/exp/linkfail_static_r1_state.json
+sh echo "[linkfail dynamic run 1]"
+link s1 s2 up
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh pkill -f "[i]perf"
+sh pkill -f "[p]ing -D"
+sh sleep 2
+sh python3 scripts/ctl.py mode dynamic
+h1 python3 -u -m app.task_manager > results/exp/linkfail_dynamic_r1_manager.log 2>&1 &
+w1 python3 -u -m app.worker --id w1 --manager 10.0.0.1 > results/exp/linkfail_dynamic_r1_w1.log 2>&1 &
+w2 python3 -u -m app.worker --id w2 --manager 10.0.0.1 > results/exp/linkfail_dynamic_r1_w2.log 2>&1 &
+w3 python3 -u -m app.worker --id w3 --manager 10.0.0.1 > results/exp/linkfail_dynamic_r1_w3.log 2>&1 &
+w4 python3 -u -m app.worker --id w4 --manager 10.0.0.1 > results/exp/linkfail_dynamic_r1_w4.log 2>&1 &
+sh sleep 3
+h1 ping -D -i 0.05 -w 22 10.0.0.11 > results/exp/linkfail_dynamic_r1_ping.log 2>&1 &
+h2 python3 -u -m app.client --manager 10.0.0.1 --tasks 100 --work-ms 300 --wait-workers 4 --out results/exp/linkfail_dynamic_r1_client.json > results/exp/linkfail_dynamic_r1_client.log 2>&1 &
+sh sleep 4
+sh date +%s.%N > results/exp/linkfail_dynamic_r1_times.txt
+link s1 s2 down
+sh sleep 8
+sh date +%s.%N >> results/exp/linkfail_dynamic_r1_times.txt
+link s1 s2 up
+sh sleep 13
+sh python3 scripts/ctl.py state-json > results/exp/linkfail_dynamic_r1_state.json
+sh echo "[linkfail static run 2]"
+link s1 s2 up
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh pkill -f "[i]perf"
+sh pkill -f "[p]ing -D"
+sh sleep 2
+sh python3 scripts/ctl.py mode static
+h1 python3 -u -m app.task_manager > results/exp/linkfail_static_r2_manager.log 2>&1 &
+w1 python3 -u -m app.worker --id w1 --manager 10.0.0.1 > results/exp/linkfail_static_r2_w1.log 2>&1 &
+w2 python3 -u -m app.worker --id w2 --manager 10.0.0.1 > results/exp/linkfail_static_r2_w2.log 2>&1 &
+w3 python3 -u -m app.worker --id w3 --manager 10.0.0.1 > results/exp/linkfail_static_r2_w3.log 2>&1 &
+w4 python3 -u -m app.worker --id w4 --manager 10.0.0.1 > results/exp/linkfail_static_r2_w4.log 2>&1 &
+sh sleep 3
+h1 ping -D -i 0.05 -w 22 10.0.0.11 > results/exp/linkfail_static_r2_ping.log 2>&1 &
+h2 python3 -u -m app.client --manager 10.0.0.1 --tasks 100 --work-ms 300 --wait-workers 4 --out results/exp/linkfail_static_r2_client.json > results/exp/linkfail_static_r2_client.log 2>&1 &
+sh sleep 4
+sh date +%s.%N > results/exp/linkfail_static_r2_times.txt
+link s1 s2 down
+sh sleep 8
+sh date +%s.%N >> results/exp/linkfail_static_r2_times.txt
+link s1 s2 up
+sh sleep 13
+sh python3 scripts/ctl.py state-json > results/exp/linkfail_static_r2_state.json
+sh echo "[linkfail dynamic run 2]"
+link s1 s2 up
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh pkill -f "[i]perf"
+sh pkill -f "[p]ing -D"
+sh sleep 2
+sh python3 scripts/ctl.py mode dynamic
+h1 python3 -u -m app.task_manager > results/exp/linkfail_dynamic_r2_manager.log 2>&1 &
+w1 python3 -u -m app.worker --id w1 --manager 10.0.0.1 > results/exp/linkfail_dynamic_r2_w1.log 2>&1 &
+w2 python3 -u -m app.worker --id w2 --manager 10.0.0.1 > results/exp/linkfail_dynamic_r2_w2.log 2>&1 &
+w3 python3 -u -m app.worker --id w3 --manager 10.0.0.1 > results/exp/linkfail_dynamic_r2_w3.log 2>&1 &
+w4 python3 -u -m app.worker --id w4 --manager 10.0.0.1 > results/exp/linkfail_dynamic_r2_w4.log 2>&1 &
+sh sleep 3
+h1 ping -D -i 0.05 -w 22 10.0.0.11 > results/exp/linkfail_dynamic_r2_ping.log 2>&1 &
+h2 python3 -u -m app.client --manager 10.0.0.1 --tasks 100 --work-ms 300 --wait-workers 4 --out results/exp/linkfail_dynamic_r2_client.json > results/exp/linkfail_dynamic_r2_client.log 2>&1 &
+sh sleep 4
+sh date +%s.%N > results/exp/linkfail_dynamic_r2_times.txt
+link s1 s2 down
+sh sleep 8
+sh date +%s.%N >> results/exp/linkfail_dynamic_r2_times.txt
+link s1 s2 up
+sh sleep 13
+sh python3 scripts/ctl.py state-json > results/exp/linkfail_dynamic_r2_state.json
+sh echo "[linkfail static run 3]"
+link s1 s2 up
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh pkill -f "[i]perf"
+sh pkill -f "[p]ing -D"
+sh sleep 2
+sh python3 scripts/ctl.py mode static
+h1 python3 -u -m app.task_manager > results/exp/linkfail_static_r3_manager.log 2>&1 &
+w1 python3 -u -m app.worker --id w1 --manager 10.0.0.1 > results/exp/linkfail_static_r3_w1.log 2>&1 &
+w2 python3 -u -m app.worker --id w2 --manager 10.0.0.1 > results/exp/linkfail_static_r3_w2.log 2>&1 &
+w3 python3 -u -m app.worker --id w3 --manager 10.0.0.1 > results/exp/linkfail_static_r3_w3.log 2>&1 &
+w4 python3 -u -m app.worker --id w4 --manager 10.0.0.1 > results/exp/linkfail_static_r3_w4.log 2>&1 &
+sh sleep 3
+h1 ping -D -i 0.05 -w 22 10.0.0.11 > results/exp/linkfail_static_r3_ping.log 2>&1 &
+h2 python3 -u -m app.client --manager 10.0.0.1 --tasks 100 --work-ms 300 --wait-workers 4 --out results/exp/linkfail_static_r3_client.json > results/exp/linkfail_static_r3_client.log 2>&1 &
+sh sleep 4
+sh date +%s.%N > results/exp/linkfail_static_r3_times.txt
+link s1 s2 down
+sh sleep 8
+sh date +%s.%N >> results/exp/linkfail_static_r3_times.txt
+link s1 s2 up
+sh sleep 13
+sh python3 scripts/ctl.py state-json > results/exp/linkfail_static_r3_state.json
+sh echo "[linkfail dynamic run 3]"
+link s1 s2 up
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh pkill -f "[i]perf"
+sh pkill -f "[p]ing -D"
+sh sleep 2
+sh python3 scripts/ctl.py mode dynamic
+h1 python3 -u -m app.task_manager > results/exp/linkfail_dynamic_r3_manager.log 2>&1 &
+w1 python3 -u -m app.worker --id w1 --manager 10.0.0.1 > results/exp/linkfail_dynamic_r3_w1.log 2>&1 &
+w2 python3 -u -m app.worker --id w2 --manager 10.0.0.1 > results/exp/linkfail_dynamic_r3_w2.log 2>&1 &
+w3 python3 -u -m app.worker --id w3 --manager 10.0.0.1 > results/exp/linkfail_dynamic_r3_w3.log 2>&1 &
+w4 python3 -u -m app.worker --id w4 --manager 10.0.0.1 > results/exp/linkfail_dynamic_r3_w4.log 2>&1 &
+sh sleep 3
+h1 ping -D -i 0.05 -w 22 10.0.0.11 > results/exp/linkfail_dynamic_r3_ping.log 2>&1 &
+h2 python3 -u -m app.client --manager 10.0.0.1 --tasks 100 --work-ms 300 --wait-workers 4 --out results/exp/linkfail_dynamic_r3_client.json > results/exp/linkfail_dynamic_r3_client.log 2>&1 &
+sh sleep 4
+sh date +%s.%N > results/exp/linkfail_dynamic_r3_times.txt
+link s1 s2 down
+sh sleep 8
+sh date +%s.%N >> results/exp/linkfail_dynamic_r3_times.txt
+link s1 s2 up
+sh sleep 13
+sh python3 scripts/ctl.py state-json > results/exp/linkfail_dynamic_r3_state.json
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh pkill -f "[i]perf"
+sh pkill -f "[p]ing -D"
+sh sleep 2
+sh echo "=== linkfail finished"

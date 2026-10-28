@@ -1,0 +1,109 @@
+sh mkdir -p results/exp
+sh echo "[wfail baseline run 1]"
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh pkill -f "[i]perf"
+sh pkill -f "[p]ing -D"
+sh sleep 2
+sh python3 scripts/ctl.py mode dynamic
+h1 python3 -u -m app.task_manager --max-attempts 1 > results/exp/wfail_baseline_r1_manager.log 2>&1 &
+w1 python3 -u -m app.worker --id w1 --manager 10.0.0.1 > results/exp/wfail_baseline_r1_w1.log 2>&1 &
+w2 python3 -u -m app.worker --id w2 --manager 10.0.0.1 > results/exp/wfail_baseline_r1_w2.log 2>&1 &
+w3 python3 -u -m app.worker --id w3 --manager 10.0.0.1 > results/exp/wfail_baseline_r1_w3.log 2>&1 &
+w4 python3 -u -m app.worker --id w4 --manager 10.0.0.1 > results/exp/wfail_baseline_r1_w4.log 2>&1 &
+sh sleep 3
+h2 python3 -u -m app.client --manager 10.0.0.1 --tasks 40 --work-ms 500 --wait-workers 4 --timeout 90 --out results/exp/wfail_baseline_r1_client.json > results/exp/wfail_baseline_r1_client.log 2>&1 &
+sh sleep 3
+sh pkill -f "[a]pp.worker --id 10.0.0.12"
+sh while pgrep -f "[a]pp.client" > /dev/null; do sleep 1; done
+sh echo "[wfail redistribute run 1]"
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh pkill -f "[i]perf"
+sh pkill -f "[p]ing -D"
+sh sleep 2
+sh python3 scripts/ctl.py mode dynamic
+h1 python3 -u -m app.task_manager > results/exp/wfail_redistribute_r1_manager.log 2>&1 &
+w1 python3 -u -m app.worker --id w1 --manager 10.0.0.1 > results/exp/wfail_redistribute_r1_w1.log 2>&1 &
+w2 python3 -u -m app.worker --id w2 --manager 10.0.0.1 > results/exp/wfail_redistribute_r1_w2.log 2>&1 &
+w3 python3 -u -m app.worker --id w3 --manager 10.0.0.1 > results/exp/wfail_redistribute_r1_w3.log 2>&1 &
+w4 python3 -u -m app.worker --id w4 --manager 10.0.0.1 > results/exp/wfail_redistribute_r1_w4.log 2>&1 &
+sh sleep 3
+h2 python3 -u -m app.client --manager 10.0.0.1 --tasks 40 --work-ms 500 --wait-workers 4 --timeout 90 --out results/exp/wfail_redistribute_r1_client.json > results/exp/wfail_redistribute_r1_client.log 2>&1 &
+sh sleep 3
+sh pkill -f "[a]pp.worker --id 10.0.0.12"
+sh while pgrep -f "[a]pp.client" > /dev/null; do sleep 1; done
+sh echo "[wfail baseline run 2]"
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh pkill -f "[i]perf"
+sh pkill -f "[p]ing -D"
+sh sleep 2
+sh python3 scripts/ctl.py mode dynamic
+h1 python3 -u -m app.task_manager --max-attempts 1 > results/exp/wfail_baseline_r2_manager.log 2>&1 &
+w1 python3 -u -m app.worker --id w1 --manager 10.0.0.1 > results/exp/wfail_baseline_r2_w1.log 2>&1 &
+w2 python3 -u -m app.worker --id w2 --manager 10.0.0.1 > results/exp/wfail_baseline_r2_w2.log 2>&1 &
+w3 python3 -u -m app.worker --id w3 --manager 10.0.0.1 > results/exp/wfail_baseline_r2_w3.log 2>&1 &
+w4 python3 -u -m app.worker --id w4 --manager 10.0.0.1 > results/exp/wfail_baseline_r2_w4.log 2>&1 &
+sh sleep 3
+h2 python3 -u -m app.client --manager 10.0.0.1 --tasks 40 --work-ms 500 --wait-workers 4 --timeout 90 --out results/exp/wfail_baseline_r2_client.json > results/exp/wfail_baseline_r2_client.log 2>&1 &
+sh sleep 3
+sh pkill -f "[a]pp.worker --id 10.0.0.12"
+sh while pgrep -f "[a]pp.client" > /dev/null; do sleep 1; done
+sh echo "[wfail redistribute run 2]"
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh pkill -f "[i]perf"
+sh pkill -f "[p]ing -D"
+sh sleep 2
+sh python3 scripts/ctl.py mode dynamic
+h1 python3 -u -m app.task_manager > results/exp/wfail_redistribute_r2_manager.log 2>&1 &
+w1 python3 -u -m app.worker --id w1 --manager 10.0.0.1 > results/exp/wfail_redistribute_r2_w1.log 2>&1 &
+w2 python3 -u -m app.worker --id w2 --manager 10.0.0.1 > results/exp/wfail_redistribute_r2_w2.log 2>&1 &
+w3 python3 -u -m app.worker --id w3 --manager 10.0.0.1 > results/exp/wfail_redistribute_r2_w3.log 2>&1 &
+w4 python3 -u -m app.worker --id w4 --manager 10.0.0.1 > results/exp/wfail_redistribute_r2_w4.log 2>&1 &
+sh sleep 3
+h2 python3 -u -m app.client --manager 10.0.0.1 --tasks 40 --work-ms 500 --wait-workers 4 --timeout 90 --out results/exp/wfail_redistribute_r2_client.json > results/exp/wfail_redistribute_r2_client.log 2>&1 &
+sh sleep 3
+sh pkill -f "[a]pp.worker --id 10.0.0.12"
+sh while pgrep -f "[a]pp.client" > /dev/null; do sleep 1; done
+sh echo "[wfail baseline run 3]"
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh pkill -f "[i]perf"
+sh pkill -f "[p]ing -D"
+sh sleep 2
+sh python3 scripts/ctl.py mode dynamic
+h1 python3 -u -m app.task_manager --max-attempts 1 > results/exp/wfail_baseline_r3_manager.log 2>&1 &
+w1 python3 -u -m app.worker --id w1 --manager 10.0.0.1 > results/exp/wfail_baseline_r3_w1.log 2>&1 &
+w2 python3 -u -m app.worker --id w2 --manager 10.0.0.1 > results/exp/wfail_baseline_r3_w2.log 2>&1 &
+w3 python3 -u -m app.worker --id w3 --manager 10.0.0.1 > results/exp/wfail_baseline_r3_w3.log 2>&1 &
+w4 python3 -u -m app.worker --id w4 --manager 10.0.0.1 > results/exp/wfail_baseline_r3_w4.log 2>&1 &
+sh sleep 3
+h2 python3 -u -m app.client --manager 10.0.0.1 --tasks 40 --work-ms 500 --wait-workers 4 --timeout 90 --out results/exp/wfail_baseline_r3_client.json > results/exp/wfail_baseline_r3_client.log 2>&1 &
+sh sleep 3
+sh pkill -f "[a]pp.worker --id 10.0.0.12"
+sh while pgrep -f "[a]pp.client" > /dev/null; do sleep 1; done
+sh echo "[wfail redistribute run 3]"
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh pkill -f "[i]perf"
+sh pkill -f "[p]ing -D"
+sh sleep 2
+sh python3 scripts/ctl.py mode dynamic
+h1 python3 -u -m app.task_manager > results/exp/wfail_redistribute_r3_manager.log 2>&1 &
+w1 python3 -u -m app.worker --id w1 --manager 10.0.0.1 > results/exp/wfail_redistribute_r3_w1.log 2>&1 &
+w2 python3 -u -m app.worker --id w2 --manager 10.0.0.1 > results/exp/wfail_redistribute_r3_w2.log 2>&1 &
+w3 python3 -u -m app.worker --id w3 --manager 10.0.0.1 > results/exp/wfail_redistribute_r3_w3.log 2>&1 &
+w4 python3 -u -m app.worker --id w4 --manager 10.0.0.1 > results/exp/wfail_redistribute_r3_w4.log 2>&1 &
+sh sleep 3
+h2 python3 -u -m app.client --manager 10.0.0.1 --tasks 40 --work-ms 500 --wait-workers 4 --timeout 90 --out results/exp/wfail_redistribute_r3_client.json > results/exp/wfail_redistribute_r3_client.log 2>&1 &
+sh sleep 3
+sh pkill -f "[a]pp.worker --id 10.0.0.12"
+sh while pgrep -f "[a]pp.client" > /dev/null; do sleep 1; done
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh pkill -f "[i]perf"
+sh pkill -f "[p]ing -D"
+sh sleep 2
+sh echo "=== wfail finished"
