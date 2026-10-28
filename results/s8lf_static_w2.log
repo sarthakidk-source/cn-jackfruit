@@ -1,0 +1,19 @@
+08:30:02.302 INFO worker[6355]: registered with manager 10.0.0.1:9100 as 10.0.0.12 (heartbeat 1.0s)
+08:30:05.637 INFO worker[6355]: task t0001 done in 310 ms
+08:30:05.952 INFO worker[6355]: task t0005 done in 314 ms
+08:30:06.258 INFO worker[6355]: task t0011 done in 305 ms
+08:30:06.575 INFO worker[6355]: task t0015 done in 317 ms
+08:30:06.880 INFO worker[6355]: task t0017 done in 305 ms
+08:30:07.186 INFO worker[6355]: task t0022 done in 304 ms
+08:30:07.493 INFO worker[6355]: task t0026 done in 307 ms
+08:30:07.799 INFO worker[6355]: task t0028 done in 306 ms
+08:30:08.112 INFO worker[6355]: task t0032 done in 312 ms
+08:30:08.420 INFO worker[6355]: task t0036 done in 308 ms
+08:30:08.737 INFO worker[6355]: task t0040 done in 316 ms
+08:30:09.048 INFO worker[6355]: task t0044 done in 311 ms
+08:30:09.354 INFO worker[6355]: task t0050 done in 306 ms
+08:30:09.666 INFO worker[6355]: task t0052 done in 311 ms
+08:30:09.973 INFO worker[6355]: task t0056 done in 306 ms
+08:30:12.519 WARNING worker[6355]: session ended (manager silent)
+08:30:17.631 INFO worker[6355]: registered with manager 10.0.0.1:9100 as 10.0.0.12 (heartbeat 1.0s)
+08:31:19.484 INFO worker[6355]: worker exiting (shutdown)

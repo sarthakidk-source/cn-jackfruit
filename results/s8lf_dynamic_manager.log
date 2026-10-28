@@ -1,0 +1,8 @@
+08:28:32.245 INFO manager: task manager up: policy=least_loaded cap=2 hb_timeout=3.0s workers:9100 clients:9200
+08:28:32.245 INFO ctlclient: connected to controller at /tmp/jackfruit-ctl.sock
+08:28:32.286 INFO manager: registered worker 10.0.0.12 from 10.0.0.12:36256 (1 online)
+08:28:32.288 INFO manager: registered worker 10.0.0.11 from 10.0.0.11:39342 (2 online)
+08:28:32.405 INFO manager: registered worker 10.0.0.13 from 10.0.0.13:44378 (3 online)
+08:28:32.417 INFO manager: registered worker 10.0.0.14 from 10.0.0.14:41016 (4 online)
+08:28:35.401 INFO manager: SUBMIT: 100 accepted, 0 duplicate, 0 rejected
+08:30:00.112 INFO manager: signal 15 received, shutting down

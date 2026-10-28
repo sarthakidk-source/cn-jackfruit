@@ -1,0 +1,6 @@
+submitted 100 tasks (0 duplicate, 0 rejected)
+completed 100 / 100   failed 0   unfinished 0   timed_out=False
+makespan 12.231 s   throughput 8.176 tasks/s   requeues 4
+latency ms: {'mean': 5070.3, 'median': 4066.5, 'max': 12231.1}
+tasks per worker: {'10.0.0.11': 13, '10.0.0.12': 13, '10.0.0.13': 36, '10.0.0.14': 38}
+full result written to results/s8lf_static_client.json

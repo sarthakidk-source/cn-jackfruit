@@ -1,0 +1,23 @@
+sh python3 scripts/ctl.py mode dynamic
+sh date +%s.%N > results/s8cg_dynamic_times.txt
+link s1 s2 up
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh pkill -f "[i]perf"
+sh sleep 2
+h1 python3 -u -m app.task_manager > results/s8cg_dynamic_manager.log 2>&1 &
+w1 python3 -u -m app.worker --id w1 --manager 10.0.0.1 > results/s8cg_dynamic_w1.log 2>&1 &
+w2 python3 -u -m app.worker --id w2 --manager 10.0.0.1 > results/s8cg_dynamic_w2.log 2>&1 &
+w3 python3 -u -m app.worker --id w3 --manager 10.0.0.1 > results/s8cg_dynamic_w3.log 2>&1 &
+w4 python3 -u -m app.worker --id w4 --manager 10.0.0.1 > results/s8cg_dynamic_w4.log 2>&1 &
+sh sleep 3
+w2 iperf -u -s > results/s8cg_dynamic_iperf_server.log 2>&1 &
+sh sleep 1
+h2 iperf -u -c 10.0.0.12 -b 9M -t 120 -i 1 > results/s8cg_dynamic_iperf_client.log 2>&1 &
+sh sleep 9
+h2 python3 -u -m app.client --manager 10.0.0.1 --tasks 40 --work-ms 50 --payload-kb 100 --wait-workers 4 --timeout 90 --out results/s8cg_dynamic_client.json > results/s8cg_dynamic_client.log 2>&1
+sh python3 scripts/ctl.py state-json > results/s8cg_dynamic_state.json
+sh pkill -f "[i]perf"
+sh echo "=== client summary"
+sh cat results/s8cg_dynamic_client.log
+sh python3 scripts/check_s8.py congestion dynamic

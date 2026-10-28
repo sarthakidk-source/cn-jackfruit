@@ -1,0 +1,13 @@
+08:31:21.980 INFO worker[6854]: registered with manager 10.0.0.1:9100 as 10.0.0.12 (heartbeat 1.0s)
+08:31:35.696 INFO worker[6854]: task t0001 done in 55 ms
+08:31:36.055 INFO worker[6854]: task t0005 done in 54 ms
+08:31:36.359 INFO worker[6854]: task t0012 done in 54 ms
+08:31:36.713 INFO worker[6854]: task t0016 done in 55 ms
+08:31:37.062 INFO worker[6854]: task t0020 done in 55 ms
+08:31:37.371 INFO worker[6854]: task t0024 done in 54 ms
+08:31:37.725 INFO worker[6854]: task t0028 done in 55 ms
+08:31:38.037 INFO worker[6854]: task t0032 done in 55 ms
+08:31:38.379 INFO worker[6854]: task t0036 done in 54 ms
+08:31:38.551 INFO worker[6854]: task t0039 done in 54 ms
+08:32:18.957 INFO worker[6854]: signal 15 received, stopping
+08:32:18.958 INFO worker[6854]: worker exiting (shutdown)

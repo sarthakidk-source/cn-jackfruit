@@ -1,0 +1,6 @@
+submitted 40 tasks (0 duplicate, 0 rejected)
+completed 40 / 40   failed 0   unfinished 0   timed_out=False
+makespan 3.466 s   throughput 11.54 tasks/s   requeues 0
+latency ms: {'mean': 1930.7, 'median': 1977.3, 'max': 3466.2}
+tasks per worker: {'10.0.0.11': 10, '10.0.0.12': 10, '10.0.0.13': 9, '10.0.0.14': 11}
+full result written to results/s8cg_dynamic_client.json

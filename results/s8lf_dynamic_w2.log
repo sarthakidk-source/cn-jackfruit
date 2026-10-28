@@ -1,0 +1,28 @@
+08:28:32.288 INFO worker[5925]: registered with manager 10.0.0.1:9100 as 10.0.0.12 (heartbeat 1.0s)
+08:28:35.807 INFO worker[5925]: task t0001 done in 392 ms
+08:28:36.125 INFO worker[5925]: task t0005 done in 317 ms
+08:28:36.440 INFO worker[5925]: task t0010 done in 315 ms
+08:28:36.757 INFO worker[5925]: task t0015 done in 316 ms
+08:28:37.072 INFO worker[5925]: task t0018 done in 314 ms
+08:28:37.427 INFO worker[5925]: task t0021 done in 356 ms
+08:28:37.755 INFO worker[5925]: task t0024 done in 326 ms
+08:28:38.075 INFO worker[5925]: task t0028 done in 319 ms
+08:28:38.392 INFO worker[5925]: task t0033 done in 312 ms
+08:28:38.768 INFO worker[5925]: task t0038 done in 376 ms
+08:28:39.087 INFO worker[5925]: task t0043 done in 319 ms
+08:28:39.395 INFO worker[5925]: task t0047 done in 307 ms
+08:28:39.715 INFO worker[5925]: task t0050 done in 319 ms
+08:28:40.021 INFO worker[5925]: task t0054 done in 306 ms
+08:28:40.342 INFO worker[5925]: task t0058 done in 321 ms
+08:28:40.652 INFO worker[5925]: task t0061 done in 305 ms
+08:28:40.961 INFO worker[5925]: task t0065 done in 309 ms
+08:28:41.279 INFO worker[5925]: task t0069 done in 318 ms
+08:28:41.595 INFO worker[5925]: task t0073 done in 314 ms
+08:28:41.906 INFO worker[5925]: task t0078 done in 310 ms
+08:28:42.215 INFO worker[5925]: task t0082 done in 308 ms
+08:28:42.528 INFO worker[5925]: task t0084 done in 311 ms
+08:28:42.848 INFO worker[5925]: task t0089 done in 318 ms
+08:28:43.155 INFO worker[5925]: task t0093 done in 306 ms
+08:28:43.460 INFO worker[5925]: task t0096 done in 305 ms
+08:30:00.126 INFO worker[5925]: signal 15 received, stopping
+08:30:00.246 INFO worker[5925]: worker exiting (shutdown)

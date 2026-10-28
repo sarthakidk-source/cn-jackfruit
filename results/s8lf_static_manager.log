@@ -1,0 +1,16 @@
+08:30:02.243 INFO ctlclient: connected to controller at /tmp/jackfruit-ctl.sock
+08:30:02.243 INFO manager: task manager up: policy=least_loaded cap=2 hb_timeout=3.0s workers:9100 clients:9200
+08:30:02.265 INFO manager: registered worker 10.0.0.11 from 10.0.0.11:53826 (1 online)
+08:30:02.301 INFO manager: registered worker 10.0.0.12 from 10.0.0.12:57726 (2 online)
+08:30:02.335 INFO manager: registered worker 10.0.0.14 from 10.0.0.14:58232 (3 online)
+08:30:02.339 INFO manager: registered worker 10.0.0.13 from 10.0.0.13:43326 (4 online)
+08:30:05.324 INFO manager: SUBMIT: 100 accepted, 0 duplicate, 0 rejected
+08:30:12.404 WARNING manager: worker 10.0.0.11 FAILED (heartbeat timeout (3.0s silent)); 2 task(s) in flight
+08:30:12.404 INFO manager: task t0053 requeued (worker failed: heartbeat timeout (3.0s silent))
+08:30:12.405 INFO manager: task t0057 requeued (worker failed: heartbeat timeout (3.0s silent))
+08:30:12.406 WARNING manager: worker 10.0.0.12 FAILED (heartbeat timeout (3.0s silent)); 2 task(s) in flight
+08:30:12.406 INFO manager: task t0052 requeued (worker failed: heartbeat timeout (3.0s silent))
+08:30:12.409 INFO manager: task t0056 requeued (worker failed: heartbeat timeout (3.0s silent))
+08:30:17.632 INFO manager: registered worker 10.0.0.12 from 10.0.0.12:50580 (3 online)
+08:30:17.633 INFO manager: registered worker 10.0.0.11 from 10.0.0.11:56576 (4 online)
+08:31:19.473 INFO manager: signal 15 received, shutting down
