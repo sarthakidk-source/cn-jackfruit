@@ -5,6 +5,7 @@ Standard library only, so it works in the Mininet CLI (as root) or as a normal u
 
   python3 scripts/ctl.py ping
   python3 scripts/ctl.py state             # mode, down links, utilisation, app paths, events
+  python3 scripts/ctl.py state-json        # same, raw JSON with epoch timestamps (for analysis)
   python3 scripts/ctl.py rules             # flow tables the controller believes it installed
   python3 scripts/ctl.py mode static|dynamic
   python3 scripts/ctl.py worker-up 10.0.0.11
@@ -30,6 +31,8 @@ def main(argv):
         msg = {"type": "PING"}
     elif cmd == "state":
         msg = {"type": "GET_STATE", "events": 30}
+    elif cmd == "state-json":
+        msg = {"type": "GET_STATE", "events": 1000}
     elif cmd == "rules":
         msg = {"type": "GET_RULES"}
     elif cmd == "mode" and len(argv) == 2:
@@ -59,7 +62,7 @@ def main(argv):
                 print("   prio %-2d src=%-10s dst=%-10s -> %s" % (
                     prio, src or "*", dst or "*", "DROP" if out == -1 else "port %d" % out))
         return 0
-    print(json.dumps(reply, indent=1))
+    print(json.dumps(reply) if cmd == "state-json" else json.dumps(reply, indent=1))
     return 0 if reply.get("type") != "ERROR" else 3
 
 
