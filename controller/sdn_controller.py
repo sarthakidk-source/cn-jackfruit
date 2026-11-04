@@ -1,35 +1,3 @@
-"""
-CN Jackfruit SDN controller (Ryu 4.34, OpenFlow 1.3).
-
-Stage 3 behaviour is kept: on switch connect it wipes the flow table, installs a
-table-miss rule and proactive shortest-path IPv4 rules, and answers ARP requests
-itself (ARP proxy) so nothing is ever flooded around the s1-s2-s3 loop.
-
-Stage 6-8 adds the dynamic behaviour. All forwarding decisions live in
-sdn_policy.py (pure Python, unit-tested); this file only
-  * feeds events into the policy:  PORT_STATUS, PORT_DESC, PORT_STATS replies,
-                                   and application messages on the control socket
-  * "reconciles": computes the desired flow table and sends only the difference
-    (FlowMod ADD for new/changed rules, DELETE_STRICT for removed ones)
-
-Events and what they cause
-  PORT_STATUS / PORT_DESC  link up/down      -> recompute paths, reinstall flows
-  PORT_STATS (every 1 s)   link utilisation  -> steer application flows
-  WORKER_UP / WORKER_DOWN  from task manager -> add / remove application flows,
-                                                optional quarantine (DROP)
-  SET_MODE                 from experiments  -> "static" (baseline) or "dynamic"
-
-Control channel: Unix socket (default /tmp/jackfruit-ctl.sock), one JSON object
-per line, one JSON reply per request. See README for the message list.
-
-Run (from the project root, inside ~/ryu-env):
-    ryu-manager controller/sdn_controller.py
-Environment overrides (all optional):
-    JACKFRUIT_MODE=dynamic|static     initial mode        (default dynamic)
-    JACKFRUIT_CTL_SOCKET=<path>       control socket path
-    JACKFRUIT_STATS_INTERVAL=<sec>    port-stats polling  (default 1.0)
-    JACKFRUIT_CORE_MBPS=<mbps>        core link capacity  (default 10)
-"""
 import json
 import os
 import socket
