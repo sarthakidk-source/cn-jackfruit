@@ -62,14 +62,16 @@ def wait_for_workers(ch, count, timeout):
 
 
 def run_batch(manager, port, specs, timeout=120.0, poll=0.2, want_workers=0,
-              wait_timeout=30.0, verbose=True):
+              wait_timeout=30.0, verbose=True, client_id=None):
+    # client_id is only needed for the Demo 2 servers; the Demo 1 manager ignores it
+    who = {"client_id": client_id} if client_id else {}
     ch = connect(manager, port)
     try:
         if want_workers and not wait_for_workers(ch, want_workers, wait_timeout):
             raise RuntimeError("fewer than %d workers registered within %.0fs"
                                % (want_workers, wait_timeout))
         t_submit = time.time()
-        ch.send({"type": SUBMIT, "tasks": specs})
+        ch.send(dict(who, type=SUBMIT, tasks=specs))
         ack = ch.recv()
         if ack is None or ack["type"] == ERROR:
             raise RuntimeError("submit refused: %s" % (ack,))
@@ -83,7 +85,7 @@ def run_batch(manager, port, specs, timeout=120.0, poll=0.2, want_workers=0,
         status = None
         timed_out = False
         while True:
-            ch.send({"type": STATUS_REQ, "task_ids": ids, "workers": False})
+            ch.send(dict(who, type=STATUS_REQ, task_ids=ids, workers=False))
             status = ch.recv()
             if status is None or status["type"] != STATUS:
                 raise ProtocolError("bad status reply: %s" % (status,))
@@ -166,6 +168,8 @@ def main():
     p.add_argument("--non-idempotent", action="store_true",
                    help="mark tasks as not retry-safe (never redistributed)")
     p.add_argument("--prefix", default="t")
+    p.add_argument("--client-id", default=None,
+                   help="name of this client (needed when talking to app.server)")
     p.add_argument("--timeout", type=float, default=120.0)
     p.add_argument("--wait-workers", type=int, default=0)
     p.add_argument("--out", default=None, help="write full result JSON here")
@@ -178,7 +182,7 @@ def main():
                        int(args.payload_kb * 1024), args.uneven, args.deadline,
                        args.max_attempts, args.prefix, not args.non_idempotent)
     result = run_batch(args.manager, args.port, specs, args.timeout,
-                       want_workers=args.wait_workers)
+                       want_workers=args.wait_workers, client_id=args.client_id)
     print_summary(result)
     if args.out:
         with open(args.out, "w") as f:

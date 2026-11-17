@@ -445,6 +445,11 @@ The Stage 8 scripts end with `scripts/check_s8.py`, which prints a `PASS`/`FAIL`
 mode being tested (a static baseline "passes" by *not* recovering). Do not nest `source` calls; the Mininet CLI
 can crash on that.
 
+**Demo 2 (multi-client / multi-server with statistics).** Two `app.server` processes share one SQLite task
+queue and one `app.worker_coordinator` (the task manager plus a sync loop) and the same four workers; `python3 -m
+app.metrics --db results/demo2.db` prints the statistics. Run `source scripts/mn/demo2.mn` at the `mininet>` prompt.
+Full instructions: [`docs/DEMO2.md`](docs/DEMO2.md).
+
 ---
 
 ## 9. Reproducing the experiments
@@ -503,6 +508,7 @@ python3 -m unittest discover -s tests
 | `tests/test_manager.py` | loopback integration tests of the real manager with real TCP: scheduling, failure, retry, duplicates |
 | `tests/test_sdn_policy.py` | path computation, reconcile-by-diff, link failure, steering, quarantine, data-plane simulation |
 | `tests/test_check_s8.py`, `tests/test_analyze.py` | the Stage 8 checker and the analysis scripts, on synthetic data |
+| `tests/test_demo2.py` | Demo 2: shared queue, two real server processes, coordinator, workers, statistics, worker failure |
 | `tests/sdn/` | the real Ryu app speaking OpenFlow 1.3 to hand-built fake switches |
 
 These tests do not need Mininet or Open vSwitch; they do not replace the experiments in section 5.
@@ -520,6 +526,10 @@ app/
   worker.py              worker: heartbeat, executor, reconnect, fault injection flags
   client.py              submit a batch, collect results and metrics
   controller_client.py   manager-to-controller notifications (Unix socket)
+  shared_queue.py        Demo 2: shared SQLite task queue (tasks, servers, clients)
+  worker_coordinator.py  Demo 2: the one shared worker pool (task manager + queue sync)
+  server.py              Demo 2: client-facing server process (run two)
+  metrics.py             Demo 2: statistics computed from the shared queue
 controller/
   sdn_policy.py          pure-Python SDN policy: paths, rules, diff, steering, quarantine
   sdn_controller.py      Ryu application (OpenFlow 1.3)

@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 results/*.tmp
 results/exp/*.log
+results/*.db
+results/*.db-wal
+results/*.db-shm

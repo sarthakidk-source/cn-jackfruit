@@ -1,0 +1,31 @@
+sh mkdir -p results
+sh pkill -f "[a]pp.task_manager"
+sh pkill -f "[a]pp.worker"
+sh pkill -f "[a]pp.server"
+sh sleep 2
+sh rm -f results/demo2.db results/demo2.db-wal results/demo2.db-shm
+h1 python3 -u -m app.worker_coordinator --db results/demo2.db > results/d2_coordinator.log 2>&1 &
+sh sleep 1
+w1 python3 -u -m app.worker --id w1 --manager 10.0.0.1 > results/d2_w1.log 2>&1 &
+w2 python3 -u -m app.worker --id w2 --manager 10.0.0.1 > results/d2_w2.log 2>&1 &
+w3 python3 -u -m app.worker --id w3 --manager 10.0.0.1 > results/d2_w3.log 2>&1 &
+w4 python3 -u -m app.worker --id w4 --manager 10.0.0.1 > results/d2_w4.log 2>&1 &
+h1 python3 -u -m app.server --id server1 --port 9201 --db results/demo2.db > results/d2_server1.log 2>&1 &
+h1 python3 -u -m app.server --id server2 --port 9202 --db results/demo2.db > results/d2_server2.log 2>&1 &
+sh sleep 3
+h2 python3 -u -m app.client --client-id alice --manager 10.0.0.1 --port 9201 --tasks 20 --work-ms 200 --prefix a > results/d2_alice.log 2>&1 &
+h2 python3 -u -m app.client --client-id bob   --manager 10.0.0.1 --port 9202 --tasks 20 --work-ms 200 --prefix b > results/d2_bob.log 2>&1 &
+h2 python3 -u -m app.client --client-id carol --manager 10.0.0.1 --port 9201 --tasks 20 --work-ms 200 --prefix c > results/d2_carol.log 2>&1 &
+h2 python3 -u -m app.client --client-id dave  --manager 10.0.0.1 --port 9202 --tasks 20 --work-ms 200 --prefix d > results/d2_dave.log 2>&1 &
+sh sleep 1
+sh echo "=== statistics while the clients are running"
+sh python3 -m app.metrics --db results/demo2.db
+sh sleep 10
+sh echo "=== client alice (server1)"
+sh cat results/d2_alice.log
+sh echo "=== client bob (server2)"
+sh cat results/d2_bob.log
+sh echo "=== final statistics"
+sh python3 -m app.metrics --db results/demo2.db
+sh echo "=== application flows installed by the controller (one per live worker)"
+sh ovs-ofctl -O OpenFlow13 dump-flows s1 | grep -c priority=20
